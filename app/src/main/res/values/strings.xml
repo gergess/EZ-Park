@@ -23,4 +23,9 @@
     <string name="password_profile">Password:</string>
     <string name="phone_profile">Contact Number:</string>
     <string name="car_plate_profile">Car Plate Number:</string>
+    <string name="payent_profile">Payment Information:</string>
+    <string name="credit_card_number_profile">Credit Card Number:</string>
+    <string name="expiry_date_profile">Expiry Date (MM/YY):</string>
+    <string name="card_name_profile">Name On Card:</string>
+    <string name="cvv_profile">CVV Number:</string>
 </resources>
