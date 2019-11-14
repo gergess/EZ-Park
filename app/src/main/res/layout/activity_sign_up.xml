@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignUpActivity" >
+
+    <EditText
+        android:id="@+id/edt_name_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="full name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edt_email_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="email "
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/edt_password_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/edt_phone_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@android:string/emptyPhoneNumber"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/edt_carplate_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="car plate number"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/txt_cardinfo_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Credit card info:" />
+
+    <EditText
+        android:id="@+id/edt_cardnumber_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="credit card number"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edt_expirydate_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="expiry date"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/edt_cardname_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="name on card"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edt_cvv_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="cvv number"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_submit_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="submit" />
+
+    <Button
+        android:id="@+id/btn_cancel_su"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cancel" />
+</LinearLayout>
