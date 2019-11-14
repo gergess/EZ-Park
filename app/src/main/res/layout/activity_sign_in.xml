@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="email "
+        android:hint="@string/Email"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -20,30 +20,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/Password"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sign in" />
+        android:text="@string/sign_in"
+        android:textSize="18sp" />
 
     <CheckBox
         android:id="@+id/chk_remember_si"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="remember me" />
+        android:text="@string/remember_me"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/txt_sighup_si"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sign up" />
+        android:text="@string/sign_up"
+        android:textAlignment="textEnd"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/txt_forgetpassword_si"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="forget password?" />
+        android:text="@string/forget_password"
+        android:textAlignment="textEnd"
+        android:textSize="18sp" />
 </LinearLayout>

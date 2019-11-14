@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="full name"
+        android:hint="@string/full_name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="email "
+        android:hint="@string/Email"
         android:inputType="textEmailAddress" />
 
     <EditText
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="password"
+        android:hint="@string/Password"
         android:inputType="textPassword" />
 
     <EditText
@@ -44,21 +44,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="car plate number"
+        android:hint="@string/car_plate"
         android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/txt_cardinfo_su"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Credit card info:" />
+        android:text="@string/credit_card_info"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/edt_cardnumber_su"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="credit card number"
+        android:hint="@string/credit_card_number"
         android:inputType="number" />
 
     <EditText
@@ -66,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="expiry date"
+        android:hint="@string/expiry_date"
         android:inputType="date" />
 
     <EditText
@@ -74,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="name on card"
+        android:hint="@string/card_name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -82,18 +83,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="cvv number"
+        android:hint="@string/cvv_number"
         android:inputType="number" />
 
     <Button
         android:id="@+id/btn_submit_su"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="submit" />
+        android:text="@string/submit" />
 
     <Button
         android:id="@+id/btn_cancel_su"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="cancel" />
+        android:text="@string/cancel" />
 </LinearLayout>

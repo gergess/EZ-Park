@@ -3,4 +3,24 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="remember_me">Remember me</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forget_password">Forget password?</string>
+    <string name="full_name">Full name</string>
+    <string name="car_plate">Car Plate Number</string>
+    <string name="credit_card_info">Credit Card Information</string>
+    <string name="credit_card_number">Credit Card Number</string>
+    <string name="expiry_date">Credit Card Expiry Date</string>
+    <string name="card_name">Name On Card</string>
+    <string name="cvv_number">CVV Number</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="name_profile">Name:</string>
+    <string name="email_profile">Email:</string>
+    <string name="password_profile">Password:</string>
+    <string name="phone_profile">Contact Number:</string>
+    <string name="car_plate_profile">Car Plate Number:</string>
 </resources>
