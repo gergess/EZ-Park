@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         Log.d("hey2", "onCreate: hey2");
+
+        Log.d("MainActivity", "tested braches");
     }
 
 }
