@@ -58,4 +58,8 @@ public class Receipt {
     public void setCost(double cost) {
         this.cost = cost;
     }
+
+    private void calculateCost(){
+
+    }
 }
