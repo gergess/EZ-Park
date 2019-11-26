@@ -43,11 +43,6 @@ public class DBViewModel extends AndroidViewModel {
 
             HashMap<String, Object> data = new HashMap<>();
 
-            String cardID = addCard(card);
-
-            user.setCardID(cardID);
-
-
             success = db.collection(COLLECTION_USER).document().set(data).isSuccessful();
         }
 
@@ -61,21 +56,21 @@ public class DBViewModel extends AndroidViewModel {
     private void updateUser(String field, String value){
 
     }
-
-    private String addCard(Card card){
-
-        boolean exist = db.collection(COLLECTION_CARDS).whereEqualTo(String.valueOf(card.getCardNum()), true).get().isSuccessful();
-
-        String cardID = null;
-
-        if (!exist){
-
-            cardID = db.collection(COLLECTION_CARDS).document().getId();
-            db.collection(COLLECTION_CARDS).document(cardID).set(card);
-
-        }
-
-
-        return cardID;
-    }
+//
+//    private String addCard(Card card){
+//
+//        boolean exist = db.collection(COLLECTION_CARDS).whereEqualTo(String.valueOf(card.getCardNum()), true).get().isSuccessful();
+//
+//        String cardID = null;
+//
+//        if (!exist){
+//
+//            cardID = db.collection(COLLECTION_CARDS).document().getId();
+//            db.collection(COLLECTION_CARDS).document(cardID).set(card);
+//
+//        }
+//
+//
+//        return cardID;
+//    }
 }

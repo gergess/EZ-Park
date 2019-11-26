@@ -27,7 +27,7 @@
         android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in"
+        android:text="@string/title_sign_in"
         android:textSize="18sp" />
 
     <CheckBox
@@ -41,7 +41,7 @@
         android:id="@+id/txt_sighup_si"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up"
+        android:text="@string/title_sign_up"
         android:textAlignment="textEnd"
         android:textSize="18sp" />
 

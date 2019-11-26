@@ -7,18 +7,18 @@ public class User {
     private String password;
     private String phoneNum;
     private String plateNum;
-    private String cardID;
+    private Card card;
 
     public User() {
     }
 
-    public User(String name, String email, String password, String phoneNum, String plateNum, String cardID) {
+    public User(String name, String email, String password, String phoneNum, String plateNum, Card card) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.phoneNum = phoneNum;
         this.plateNum = plateNum;
-        this.cardID = cardID;
+        this.card = card;
     }
 
     public String getName() {
@@ -61,11 +61,11 @@ public class User {
         this.plateNum = plateNum;
     }
 
-    public String getCardID() {
-        return cardID;
+    public Card getCard() {
+        return card;
     }
 
-    public void setCardID(String cardID) {
-        this.cardID = cardID;
+    public void setCard(Card card) {
+        this.card = card;
     }
 }

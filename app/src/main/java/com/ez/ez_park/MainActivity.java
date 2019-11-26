@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,20 +16,39 @@ import androidx.navigation.ui.NavigationUI;
 public class MainActivity extends AppCompatActivity {
 
     public static final int SPLASH_DONE = 1;
+    public static final int SIGN_IN_DONE = 2;
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+//        if (requestCode == SPLASH_DONE){
+//            if(resultCode == RESULT_OK){
+//                Intent signIn = new Intent(MainActivity.this, SignInActivity.class);
+//                startActivityForResult(signIn, SIGN_IN_DONE);
+//            }
+//        }else if(requestCode == SIGN_IN_DONE){
+//            if (resultCode == RESULT_OK){
+//
+//            }
+//        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent homeIntent = new Intent(MainActivity.this, SplashActivity.class);
-        startActivityForResult(homeIntent, SPLASH_DONE);
+//        Intent homeIntent = new Intent(MainActivity.this, SplashActivity.class);
+//        startActivityForResult(homeIntent, SPLASH_DONE);
+
 
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_receipt, R.id.navigation_profile)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
