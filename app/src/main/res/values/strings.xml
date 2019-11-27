@@ -28,4 +28,5 @@
     <string name="expiry_date_profile">Expiry Date (MM/YY):</string>
     <string name="card_name_profile">Name On Card:</string>
     <string name="cvv_profile">CVV Number:</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
