@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +22,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    TextView name, email, password, phone, carPlate, cardNumber, expiryDate, cardName, cvv;
 
     public static final int SPLASH_DONE = 1;
     public static final int SIGN_IN_DONE = 2;
@@ -61,8 +65,38 @@ public class MainActivity extends AppCompatActivity {
         Log.d("hey2", "onCreate: hey2");
 
         Log.d("MainActivity", "tested braches");
+
+        referWidgets();
     }
 
+    private void referWidgets() {
+        name = findViewById(R.id.txtNameUP);
+        name.setOnClickListener(this);
+        email = findViewById(R.id.txtEmailUP);
+        email.setOnClickListener(this);
+        password = findViewById(R.id.txtPasswordUP);
+        password.setOnClickListener(this);
+        phone = findViewById(R.id.txtPhoneUP);
+        phone.setOnClickListener(this);
+        carPlate = findViewById(R.id.txtCarPlateUP);
+        carPlate.setOnClickListener(this);
+        cardNumber = findViewById(R.id.txtCardNumberUP);
+        cardNumber.setOnClickListener(this);
+        cardName = findViewById(R.id.txtCardNameUP);
+        cardName.setOnClickListener(this);
+        expiryDate = findViewById(R.id.txtExpiryDateUP);
+        expiryDate.setOnClickListener(this);
+        cvv = findViewById(R.id.txtCvvUP);
+        cvv.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            //add all cases with alert message (may be improve code some how?)
+        }
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -90,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         Intent supportIntent = new Intent(MainActivity.this, UserSupportActivity.class);
         startActivity(supportIntent);
     }
+
 
 
 }
