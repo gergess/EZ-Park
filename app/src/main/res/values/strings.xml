@@ -30,4 +30,5 @@
     <string name="cvv_profile">CVV Number:</string>
     <string name="title_activity_maps_fragment">Map</string>
     <string name="done_button">Done</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>

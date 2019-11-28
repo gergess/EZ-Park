@@ -2,7 +2,10 @@ package com.ez.ez_park;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.ez.ez_park.ui.SignInActivity;
 import com.ez.ez_park.ui.SplashActivity;
@@ -57,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
+        Log.d("hey2", "onCreate: hey2");
+
+        Log.d("MainActivity", "tested braches");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.help_menu, menu);
+        return true;
+    }
 }
