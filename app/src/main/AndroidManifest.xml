@@ -37,8 +37,8 @@
             android:label="@string/title_activity_maps_fragment" />
         <activity android:name=".ui.SplashActivity" />
         <activity android:name=".ui.SignUpActivity" />
-        <activity android:name=".ui.MainActivity" />
-        <activity android:name=".SignInActivity" >
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.SignInActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
