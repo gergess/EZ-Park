@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">EZ-Park</string>
     <string name="title_receipt">Receipt</string>
+    <string name="title_receipt_list">Orders Receipts</string>
     <string name="title_profile">Profile</string>
     <string name="Email">Email</string>
     <string name="Password">Password</string>
@@ -28,4 +29,5 @@
     <string name="card_name_profile">Name On Card:</string>
     <string name="cvv_profile">CVV Number:</string>
     <string name="title_activity_maps_fragment">Map</string>
+    <string name="done_button">Done</string>
 </resources>

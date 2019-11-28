@@ -12,7 +12,7 @@
         android:title="@string/title_activity_maps_fragment" />
 
     <item
-        android:id="@+id/navigation_receipt"
+        android:id="@+id/navigation_receipt_list"
         android:icon="@drawable/ic_menu_receipt"
         android:title="@string/title_receipt" />
 
