@@ -1,5 +1,6 @@
 package com.ez.ez_park.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 
 import com.ez.ez_park.MainActivity;
 import com.ez.ez_park.R;
+import com.ez.ez_park.model.User;
+import com.ez.ez_park.viewmodel.DBViewModel;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +28,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     String email_enter = "";
     String password_enter = "";
+
+    DBViewModel vm;
 
     public static final int SIGN_UP_REQUEST_CODE = 1;
 
@@ -47,6 +52,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         txtForgetPass = findViewById(R.id.txt_forgetpassword_si);
         txtForgetPass.setOnClickListener(this);
+
+        vm = new DBViewModel(getApplication());
+
     }
 
     @Override
@@ -67,12 +75,30 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == SIGN_UP_REQUEST_CODE){
+            if (resultCode == RESULT_OK){
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        }
+    }
+
     private void signIn() {
         email_enter = edtEmail.getText().toString();
         password_enter = edtPassword.getText().toString();
 
-        if((email_enter.equals("test")) && (password_enter.equals("test"))){
-            this.openMainActivity();
+        String id = vm.findUserID(email_enter, password_enter);
+
+        if(!id.isEmpty()){
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
         }else{
             //login unsuccesful
             Toast.makeText(this, "Incorrect Username/Password! Try again.", Toast.LENGTH_LONG).show();
@@ -90,7 +116,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private void signUp() {
         Intent signUpIntent = new Intent(SignInActivity.this, SignUpActivity.class);
-        startActivity(signUpIntent);
+        startActivityForResult(signUpIntent, SIGN_UP_REQUEST_CODE);
     }
 
 

@@ -44,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent homeIntent = new Intent(MainActivity.this, SplashActivity.class);
-        startActivityForResult(homeIntent, SPLASH_DONE);
-
+        Intent splashActivity = new Intent(MainActivity.this, SplashActivity.class);
+        startActivityForResult(splashActivity, SPLASH_DONE);
 
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -60,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
 
-        Log.d("hey2", "onCreate: hey2");
-
-        Log.d("MainActivity", "tested braches");
     }
 
     @Override
