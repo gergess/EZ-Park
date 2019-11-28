@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_help"
+        android:icon="@drawable/ic_help"
+        app:showAsAction="always" >
+        <menu>
+            <item android:id="@+id/app_manual"
+                android:title="App Manual" />
+            <item android:id="@+id/user_support"
+                android:title="User Support" />
+
+        </menu>
+    </item>
+
+</menu>
