@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static com.ez.ez_park.MainActivity.SPLASH_DONE;
+
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText edtEmail;
@@ -31,6 +33,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        Intent homeIntent = new Intent(SignInActivity.this, SplashActivity.class);
+        startActivityForResult(homeIntent, SPLASH_DONE);
+        
         edtEmail = findViewById(R.id.edt_email_si);
         edtPassword = findViewById(R.id.edt_password_si);
 
