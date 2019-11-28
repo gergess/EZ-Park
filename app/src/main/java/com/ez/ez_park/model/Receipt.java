@@ -2,6 +2,8 @@ package com.ez.ez_park.model;
 
 public class Receipt {
 
+    private long receiptNum;
+    private String userID;
     private String carPlate;
     private String dateTime;
     private int duration;
@@ -11,12 +13,30 @@ public class Receipt {
     public Receipt() {
     }
 
-    public Receipt(String carPlate, String dateTime, int duration, String buildingCode, double cost) {
+    public Receipt(long receiptNum, String userId, String carPlate, String dateTime, int duration, String buildingCode, double cost) {
+        this.receiptNum = receiptNum;
+        this.userID = userId;
         this.carPlate = carPlate;
         this.dateTime = dateTime;
         this.duration = duration;
         this.buildingCode = buildingCode;
         this.cost = cost;
+    }
+
+    public long getReceiptNum() {
+        return receiptNum;
+    }
+
+    public void setReceiptNum(long receiptNum) {
+        this.receiptNum = receiptNum;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getCarPlate() {
@@ -57,5 +77,9 @@ public class Receipt {
 
     public void setCost(double cost) {
         this.cost = cost;
+    }
+
+    private void calculateCost(){
+
     }
 }

@@ -1,4 +1,4 @@
-package com.ez.ez_park;
+package com.ez.ez_park.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
+import com.ez.ez_park.R;
+
+
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText edtName;
     EditText edtEmail;

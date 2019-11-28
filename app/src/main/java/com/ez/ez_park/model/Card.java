@@ -3,14 +3,14 @@ package com.ez.ez_park.model;
 public class Card {
 
     private String cardName;
-    private long cardNum;
+    private int cardNum;
     private String expiryDate;
     private int CVV;
 
     public Card() {
     }
 
-    public Card(String cardName, long cardNum, String expiryDate, int CVV) {
+    public Card(String cardName, int cardNum, String expiryDate, int CVV) {
         this.cardName = cardName;
         this.cardNum = cardNum;
         this.expiryDate = expiryDate;
@@ -25,11 +25,11 @@ public class Card {
         this.cardName = cardName;
     }
 
-    public long getCardNum() {
+    public int getCardNum() {
         return cardNum;
     }
 
-    public void setCardNum(long cardNum) {
+    public void setCardNum(int cardNum) {
         this.cardNum = cardNum;
     }
 
