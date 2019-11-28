@@ -3,6 +3,7 @@ package com.ez.ez_park;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +12,7 @@ import com.ez.ez_park.ui.SignInActivity;
 import com.ez.ez_park.ui.SplashActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -28,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SPLASH_DONE){
-            if(resultCode == RESULT_OK){
+        if (requestCode == SPLASH_DONE) {
+            if (resultCode == RESULT_OK) {
                 Intent signIn = new Intent(MainActivity.this, SignInActivity.class);
                 startActivityForResult(signIn, SIGN_IN_DONE);
             }
-        }else if(requestCode == SIGN_IN_DONE){
-            if (resultCode == RESULT_OK){
+        } else if (requestCode == SIGN_IN_DONE) {
+            if (resultCode == RESULT_OK) {
                 Toast.makeText(this, "Worked!!", Toast.LENGTH_SHORT).show();
             }
         }
@@ -67,4 +69,27 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.help_menu, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.app_manual:
+                openAppManual();
+                break;
+            case R.id.user_support:
+                openUserSupport();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void openAppManual() {
+
+    }
+    private void openUserSupport() {
+        Intent supportIntent = new Intent(MainActivity.this, UserSupportActivity.class);
+        startActivity(supportIntent);
+    }
+
+
 }
