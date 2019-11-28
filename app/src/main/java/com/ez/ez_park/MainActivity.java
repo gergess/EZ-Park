@@ -22,7 +22,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity{
 
     TextView name, email, password, phone, carPlate, cardNumber, expiryDate, cardName, cvv;
 
@@ -71,32 +71,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void referWidgets() {
         name = findViewById(R.id.txtNameUP);
-        name.setOnClickListener(this);
+        //name.setOnClickListener(this);
         email = findViewById(R.id.txtEmailUP);
-        email.setOnClickListener(this);
+        //email.setOnClickListener(this);
         password = findViewById(R.id.txtPasswordUP);
-        password.setOnClickListener(this);
+        //password.setOnClickListener(this);
         phone = findViewById(R.id.txtPhoneUP);
-        phone.setOnClickListener(this);
+        //phone.setOnClickListener(this);
         carPlate = findViewById(R.id.txtCarPlateUP);
-        carPlate.setOnClickListener(this);
+        //carPlate.setOnClickListener(this);
         cardNumber = findViewById(R.id.txtCardNumberUP);
-        cardNumber.setOnClickListener(this);
+        //cardNumber.setOnClickListener(this);
         cardName = findViewById(R.id.txtCardNameUP);
-        cardName.setOnClickListener(this);
+        //cardName.setOnClickListener(this);
         expiryDate = findViewById(R.id.txtExpiryDateUP);
-        expiryDate.setOnClickListener(this);
+        //expiryDate.setOnClickListener(this);
         cvv = findViewById(R.id.txtCvvUP);
-        cvv.setOnClickListener(this);
+        //cvv.setOnClickListener(this);
     }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            //add all cases with alert message (may be improve code some how?)
-        }
-
-    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
