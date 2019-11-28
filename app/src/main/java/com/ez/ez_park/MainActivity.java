@@ -1,6 +1,7 @@
 package com.ez.ez_park;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,8 +25,6 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity{
 
-    TextView name, email, password, phone, carPlate, cardNumber, expiryDate, cardName, cvv;
-
     public static final int SPLASH_DONE = 1;
     public static final int SIGN_IN_DONE = 2;
 
@@ -34,21 +33,24 @@ public class MainActivity extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SPLASH_DONE) {
-            if (resultCode == RESULT_OK) {
-                Intent signIn = new Intent(MainActivity.this, SignInActivity.class);
-                startActivityForResult(signIn, SIGN_IN_DONE);
-            }
-        } else if (requestCode == SIGN_IN_DONE) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(this, "Worked!!", Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if (requestCode == SPLASH_DONE) {
+//            if (resultCode == RESULT_OK) {
+//                Intent signIn = new Intent(MainActivity.this, SignInActivity.class);
+//                startActivityForResult(signIn, SIGN_IN_DONE);
+//            }
+//        } else if (requestCode == SIGN_IN_DONE) {
+//            if (resultCode == RESULT_OK) {
+//                Toast.makeText(this, "Worked!!", Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//
+//        Intent splashIntent = new Intent(MainActivity.this, SplashActivity.class);
+//        startActivityForResult(splashIntent, SPLASH_DONE);
 
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -66,30 +68,10 @@ public class MainActivity extends AppCompatActivity{
 
         Log.d("MainActivity", "tested braches");
 
-        referWidgets();
+
     }
 
-    private void referWidgets() {
-        name = findViewById(R.id.txtNameUP);
-        //name.setOnClickListener(this);
-        email = findViewById(R.id.txtEmailUP);
-        //email.setOnClickListener(this);
-        password = findViewById(R.id.txtPasswordUP);
-        //password.setOnClickListener(this);
-        phone = findViewById(R.id.txtPhoneUP);
-        //phone.setOnClickListener(this);
-        carPlate = findViewById(R.id.txtCarPlateUP);
-        //carPlate.setOnClickListener(this);
-        cardNumber = findViewById(R.id.txtCardNumberUP);
-        //cardNumber.setOnClickListener(this);
-        cardName = findViewById(R.id.txtCardNameUP);
-        //cardName.setOnClickListener(this);
-        expiryDate = findViewById(R.id.txtExpiryDateUP);
-        //expiryDate.setOnClickListener(this);
-        cvv = findViewById(R.id.txtCvvUP);
-        //cvv.setOnClickListener(this);
-    }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -101,7 +83,7 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.app_manual:
-                openAppManual();
+                openWebPage();
                 break;
             case R.id.user_support:
                 openUserSupport();
@@ -110,8 +92,12 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    private void openAppManual() {
-
+    public void openWebPage() {
+        Uri webpage = Uri.parse("https://ez-parking1.000webhostapp.com/appmanual.html");
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
     private void openUserSupport() {
         Intent supportIntent = new Intent(MainActivity.this, UserSupportActivity.class);

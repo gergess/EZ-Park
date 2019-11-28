@@ -34,6 +34,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        Intent splashIntent = new Intent(SignInActivity.this, SplashActivity.class);
+        startActivity(splashIntent);
+
+
         edtEmail = findViewById(R.id.edt_email_si);
         edtPassword = findViewById(R.id.edt_password_si);
 
