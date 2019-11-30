@@ -6,10 +6,10 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.ez.ez_park.model.Card;
 import com.ez.ez_park.model.Receipt;
 import com.ez.ez_park.model.User;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -23,48 +23,67 @@ public class DBViewModel extends AndroidViewModel {
 
     private final static String TAG = "DBViewModel";
 
-    private FirebaseFirestore db;
+    public String id = "";
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public QuerySnapshot usersQS, receiptsQS;
 
     public DBViewModel(@NonNull Application application) {
         super(application);
-        db = FirebaseFirestore.getInstance();
+
+        refreshDB();
+
     }
 
-    public User getUserByID(String documentID){
-        DocumentSnapshot document =  db.collection(COLLECTION_USER).document(documentID).get().getResult();
-
-        return document.toObject(User.class);
+    public void refreshDB(){
+        db.collection(COLLECTION_USER).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                usersQS = task.getResult();
+            }
+        });
+        db.collection(COLLECTION_RECEIPT).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                receiptsQS = task.getResult();
+            }
+        });
     }
 
-    public String findUserID(String email, String pass){
+
+    public User getUserByID(String documentID) {
 
         try {
 
-            Log.e(TAG, "findUserID: 1");
-            User u = db.collection(COLLECTION_USER).document("yyFU4NBl5DIl4NvPKw1I").get().getResult().toObject(User.class);
-            Log.e(TAG, "findUserID: 2" );
-            Log.e(TAG, u.getName() );
-            return u.getName();
-//            if(query.isSuccessful()){
-//
-//                List<DocumentSnapshot> documents = query.getResult().getDocuments();
-//
-//                for (DocumentSnapshot document: documents){
-//                    if(document.getString("email").equals(email)){
-//                        if(document.getString("password").equals(pass)){
-//                            return document.getId();
-//                        }
-//                    }
-//                }
-//
-//            }else{
-//                Log.e(TAG, "not successful" );
-//            }
+            for (QueryDocumentSnapshot document: usersQS){
+                if (document.getId().equals(documentID)){
+                    return document.toObject(User.class);
+                }
+            }
 
-        }catch (Exception e){
-            Log.e(TAG, e.getLocalizedMessage() + " Sign IN" );
+        } catch (Exception e) {
+            Log.e(TAG, "getUserByID: " + e.getLocalizedMessage());
         }
-        return "";
+
+        return null;
+    }
+
+    public String findUserID(final String email, final String pass){
+
+        Log.e(TAG, "findUserID: 1 hey");
+
+        if(usersQS != null){
+            for (QueryDocumentSnapshot document: usersQS){
+                User u = document.toObject(User.class);
+                if(u.getEmail().equals(email)){
+                    if (u.getPassword().equals(pass)){
+                        id = document.getId();
+                    }
+                }
+            }
+        }
+
+        return id;
     }
 
     public boolean insertUser(User user){
@@ -76,7 +95,6 @@ public class DBViewModel extends AndroidViewModel {
 
             if (!exist){
 
-
                 success = db.collection(COLLECTION_USER).document().set(user).isSuccessful();
             }
         }catch (Exception e){
@@ -86,6 +104,10 @@ public class DBViewModel extends AndroidViewModel {
         return success;
     }
     public boolean insertReceipt(Receipt receipt){
+
+        long receiptNum = Math.round(Math.random()*5000+1000);
+
+        receipt.setReceiptNum(receiptNum);
 
         try {
             return db.collection(COLLECTION_RECEIPT).document().set(receipt).isSuccessful();
@@ -97,7 +119,11 @@ public class DBViewModel extends AndroidViewModel {
     public boolean updateUser(String documentID, String field, String value){
 
         try {
-            return db.collection(COLLECTION_USER).document(documentID).update(field, value).isSuccessful();
+            boolean success = db.collection(COLLECTION_USER).document(documentID).update(field, value).isSuccessful();
+
+            refreshDB();
+            return success;
+
         }catch (Exception e){
             Log.e(TAG, e.getLocalizedMessage() );
         }
@@ -111,16 +137,10 @@ public class DBViewModel extends AndroidViewModel {
         ArrayList<Receipt> receipts = new ArrayList<>();
 
         try {
-            QuerySnapshot documents = db.collection(COLLECTION_RECEIPT)
-                    .whereEqualTo("userID", userID)
-                    .get().getResult();
+            for (QueryDocumentSnapshot document: receiptsQS){
 
-            if (documents.size() > 0){
-
-                for (QueryDocumentSnapshot document: documents){
-
+                if(document.getString("userID").equals(userID)){
                     receipts.add(document.toObject(Receipt.class));
-
                 }
 
             }
@@ -133,9 +153,15 @@ public class DBViewModel extends AndroidViewModel {
     public Receipt getReceiptByID(String documentID){
 
         try {
-            DocumentSnapshot document =  db.collection(COLLECTION_RECEIPT).document(documentID).get().getResult();
 
-            return document.toObject(Receipt.class);
+            for(QueryDocumentSnapshot document: receiptsQS){
+
+                if (document.getId().equals( documentID)){
+                    return document.toObject(Receipt.class);
+                }
+
+            }
+
         }catch (Exception e){
             Log.e(TAG, e.getLocalizedMessage() );
         }
@@ -143,21 +169,4 @@ public class DBViewModel extends AndroidViewModel {
         return null;
 
     }
-//
-//    private String addCard(Card card){
-//
-//        boolean exist = db.collection(COLLECTION_CARDS).whereEqualTo(String.valueOf(card.getCardNum()), true).get().isSuccessful();
-//
-//        String cardID = null;
-//
-//        if (!exist){
-//
-//            cardID = db.collection(COLLECTION_CARDS).document().getId();
-//            db.collection(COLLECTION_CARDS).document(cardID).set(card);
-//
-//        }
-//
-//
-//        return cardID;
-//    }
 }

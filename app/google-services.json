@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "670506721151",
+    "firebase_url": "https://ez-park-6af99.firebaseio.com",
+    "project_id": "ez-park-6af99",
+    "storage_bucket": "ez-park-6af99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670506721151:android:43f7e7a4650e8ac2d4044a",
+        "android_client_info": {
+          "package_name": "com.ez.ez_park"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670506721151-rnc1b3k3dvp24fn6tb72bkphqlb23kib.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ez.ez_park",
+            "certificate_hash": "d17dd8a4cae92d4a35a53b06dfc8e452f3a44a2f"
+          }
+        },
+        {
+          "client_id": "670506721151-3m6b8vlf0r5v6o6vc0mdtkrefca4hv6n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ez.ez_park",
+            "certificate_hash": "33c52e34f80f78f257cd657e797ae94ec78f3a03"
+          }
+        },
+        {
+          "client_id": "670506721151-e8f9q3g8n9u81na4vr9l0lujs7im8j1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUbj38obGChFW0T_bf5MEW5C21anUy_08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670506721151-e8f9q3g8n9u81na4vr9l0lujs7im8j1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

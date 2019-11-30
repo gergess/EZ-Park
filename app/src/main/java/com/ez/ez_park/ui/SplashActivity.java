@@ -19,7 +19,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        int SPLASH_TIMEOUT = 2500;
+        int SPLASH_TIMEOUT = 6000;
         Animation animate = AnimationUtils.loadAnimation(this,R.anim.scaling);
         TextView nameText = findViewById(R.id.tvAppName);
 

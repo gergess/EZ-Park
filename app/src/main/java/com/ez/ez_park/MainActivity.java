@@ -1,8 +1,10 @@
 package com.ez.ez_park;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +13,7 @@ import com.ez.ez_park.ui.SignInActivity;
 import com.ez.ez_park.ui.SplashActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -67,4 +70,32 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.help_menu, menu);
         return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.app_manual:
+                openWebPage();
+                break;
+            case R.id.user_support:
+                openUserSupport();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void openWebPage() {
+        Uri webpage = Uri.parse("https://ez-parking1.000webhostapp.com/appmanual.html");
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+    private void openUserSupport() {
+        Intent supportIntent = new Intent(MainActivity.this, UserSupportActivity.class);
+        startActivity(supportIntent);
+    }
+
+
+
 }
