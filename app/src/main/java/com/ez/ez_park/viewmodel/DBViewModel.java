@@ -10,11 +10,13 @@ import com.ez.ez_park.model.Receipt;
 import com.ez.ez_park.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DBViewModel extends AndroidViewModel {
 
@@ -26,7 +28,9 @@ public class DBViewModel extends AndroidViewModel {
     public String id = "";
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public QuerySnapshot usersQS, receiptsQS;
+    public QuerySnapshot usersQS;
+    public List<Receipt> receiptsQS;
+    public ArrayList<Receipt> recs;
 
     public DBViewModel(@NonNull Application application) {
         super(application);
@@ -45,7 +49,14 @@ public class DBViewModel extends AndroidViewModel {
         db.collection(COLLECTION_RECEIPT).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                receiptsQS = task.getResult();
+                if (task.isSuccessful()){
+                    Log.e(TAG, task.getResult().getDocuments().get(0).getString("carPlate"));
+                    receiptsQS = task.getResult().toObjects(Receipt.class);
+
+//                    for (DocumentSnapshot doc: task.getResult().getDocuments()){
+//                        recs.add(doc.toObject(Receipt.class));
+//                    }
+                }
             }
         });
     }
@@ -55,7 +66,9 @@ public class DBViewModel extends AndroidViewModel {
 
         try {
 
+            Log.e(TAG, "getUserByID: test" );
             for (QueryDocumentSnapshot document: usersQS){
+                Log.e(TAG, "getUserByID: test2" );
                 if (document.getId().equals(documentID)){
                     return document.toObject(User.class);
                 }
@@ -69,8 +82,6 @@ public class DBViewModel extends AndroidViewModel {
     }
 
     public String findUserID(final String email, final String pass){
-
-        Log.e(TAG, "findUserID: 1 hey");
 
         if(usersQS != null){
             for (QueryDocumentSnapshot document: usersQS){
@@ -91,7 +102,6 @@ public class DBViewModel extends AndroidViewModel {
 
         try {
             boolean exist = db.collection(COLLECTION_USER).whereEqualTo(user.getName(), true).get().isSuccessful();
-
 
             if (!exist){
 
@@ -132,17 +142,23 @@ public class DBViewModel extends AndroidViewModel {
 
     }
 
-    public ArrayList getReceiptsByUserID(String userID){
+    public ArrayList<Receipt> getReceiptsByUserID(String userID){
 
         ArrayList<Receipt> receipts = new ArrayList<>();
 
         try {
-            for (QueryDocumentSnapshot document: receiptsQS){
+            Log.e(TAG, "getReceiptsByUserID: " + receiptsQS.get(0).getUserID() );
+            if (receiptsQS != null){
 
-                if(document.getString("userID").equals(userID)){
-                    receipts.add(document.toObject(Receipt.class));
+                for (Receipt document: receiptsQS){
+
+                    if(document.getUserID().equals(userID)){
+                        receipts.add(document);
+                    }
+
                 }
-
+            }else{
+                Log.e(TAG, "getReceiptsByUserID: it's null" );
             }
         }catch (Exception e){
             Log.e(TAG, e.getLocalizedMessage() );
@@ -154,10 +170,10 @@ public class DBViewModel extends AndroidViewModel {
 
         try {
 
-            for(QueryDocumentSnapshot document: receiptsQS){
+            for(Receipt document: receiptsQS){
 
-                if (document.getId().equals( documentID)){
-                    return document.toObject(Receipt.class);
+                if (document.getUserID().equals( documentID)){
+                    return document;
                 }
 
             }

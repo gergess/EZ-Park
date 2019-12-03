@@ -47,9 +47,7 @@ public class ReceiptAdapter extends ArrayAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent item = new Intent(context, ReceiptActivity.class);
-                item.putExtra("RECEIPT_NUM", receipt.getReceiptNum());
-                context.startActivity(item);
+                ((MainActivity)context).showReceiptDetail(receipt.getReceiptNum());
             }
         });
 

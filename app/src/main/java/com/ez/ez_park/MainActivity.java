@@ -1,20 +1,26 @@
 package com.ez.ez_park;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.ez.ez_park.ui.SignInActivity;
 import com.ez.ez_park.ui.SplashActivity;
+import com.ez.ez_park.viewmodel.DBViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -25,30 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int SPLASH_DONE = 1;
     public static final int SIGN_IN_DONE = 2;
+    public String ID = "";
 
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == SPLASH_DONE){
-            if(resultCode == RESULT_OK){
-                Intent signIn = new Intent(MainActivity.this, SignInActivity.class);
-                startActivityForResult(signIn, SIGN_IN_DONE);
-            }
-        }else if(requestCode == SIGN_IN_DONE){
-            if (resultCode == RESULT_OK){
-                Toast.makeText(this, "Worked!!", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+    DBViewModel vm = new DBViewModel(getApplication());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent splashActivity = new Intent(MainActivity.this, SplashActivity.class);
-        startActivityForResult(splashActivity, SPLASH_DONE);
 
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -96,6 +86,23 @@ public class MainActivity extends AppCompatActivity {
         startActivity(supportIntent);
     }
 
+    public void showReceiptDetail(long receiptNum){
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.receipt_detail, null);
 
+        TextView tvReceiptNum = dialogView.findViewById(R.id.tvReceiptNum);
+
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setTitle("Receipt Detail")
+                .setView(dialogView)
+                .setPositiveButton("Done", null)
+                .create();
+
+        alertDialog.show();
+    }
+
+    public String getUserID(){
+        return getIntent().getStringExtra("USER_ID");
+    }
 
 }

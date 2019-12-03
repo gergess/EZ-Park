@@ -6,18 +6,24 @@ import androidx.fragment.app.Fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.ez.ez_park.MainActivity;
 import com.ez.ez_park.R;
+import com.ez.ez_park.model.Card;
+import com.ez.ez_park.model.User;
+import com.ez.ez_park.viewmodel.DBViewModel;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener
 {
 
     TextView name, email, password, phone, carPlate, cardNumber, expiryDate, cardName, cvv;
+    DBViewModel vm;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -25,6 +31,23 @@ public class ProfileFragment extends Fragment implements View.OnClickListener
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
         referWidgets(root);
 
+        MainActivity mainActivity = (MainActivity) getActivity();
+
+        vm = new DBViewModel(mainActivity.getApplication());
+
+        String id = mainActivity.getUserID();
+
+        User user = vm.getUserByID(id);
+//        Card card = user.getCard();
+
+//        name.setText(user.getName());
+//        email.setText(user.getEmail());
+//        password.setText(user.getPassword());
+//        phone.setText(user.getPhoneNum());
+//        carPlate.setText(user.getPlateNum());
+//        cardNumber.setText(card.getCardNum());
+//        expiryDate.setText(card.getExpiryDate());
+//        cvv.setText(card.getCVV());
 
         return root;
 

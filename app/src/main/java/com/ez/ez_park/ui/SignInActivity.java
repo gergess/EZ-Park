@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,6 +21,8 @@ import com.ez.ez_park.viewmodel.DBViewModel;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public static final int SPLASH_DONE = 1;
+
     EditText edtEmail;
     EditText edtPassword;
     Button btnSignIn;
@@ -34,13 +37,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     public static final int SIGN_UP_REQUEST_CODE = 1;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        Intent splashActivity = new Intent(SignInActivity.this, SplashActivity.class);
+        startActivityForResult(splashActivity, SPLASH_DONE);
 
         edtEmail = findViewById(R.id.edt_email_si);
         edtPassword = findViewById(R.id.edt_password_si);
@@ -85,9 +88,6 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         if(requestCode == SIGN_UP_REQUEST_CODE){
             if (resultCode == RESULT_OK){
                 vm.refreshDB();
-                Intent intent = new Intent();
-                setResult(RESULT_OK, intent);
-                finish();
             }
         }
     }
@@ -100,13 +100,11 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         String id = vm.findUserID(email_enter, password_enter);
 
-
-
         if(!id.isEmpty()){
-            Intent intent = new Intent();
+            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+            Log.e("SIGN", "signIn: " + id );
             intent.putExtra("USER_ID", id);
-            setResult(RESULT_OK, intent);
-            finish();
+            startActivity(intent);
         }else{
             //login unsuccessful
             Toast.makeText(this, "Incorrect Username/Password! Try again.", Toast.LENGTH_LONG).show();
