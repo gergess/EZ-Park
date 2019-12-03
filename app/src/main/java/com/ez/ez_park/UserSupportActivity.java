@@ -6,12 +6,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class UserSupportActivity extends AppCompatActivity implements View.OnClickListener{
 
-    TextView phone;
-    TextView email;
+    Button phone;
+    Button email;
 
     String email_compose = "4braus@gmail.com";
     String phone_call = "6478031384";
@@ -21,10 +22,10 @@ public class UserSupportActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_support);
 
-        phone = findViewById(R.id.txtPhone_contact);
+        phone = findViewById(R.id.btn_phoneContact);
         phone.setOnClickListener(this);
 
-        email = findViewById(R.id.txtEmail_cintact);
+        email = findViewById(R.id.btn_emailContact);
         email.setOnClickListener(this);
 
     }
@@ -32,10 +33,10 @@ public class UserSupportActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.txtPhone_contact:
+            case R.id.btn_phoneContact:
                 dialPhoneNumber();
                 break;
-            case R.id.txtEmail_cintact:
+            case R.id.btn_emailContact:
                 composeEmail();
                 break;
         }

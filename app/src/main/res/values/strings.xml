@@ -31,4 +31,6 @@
     <string name="title_activity_maps_fragment">Map</string>
     <string name="done_button">Done</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="contact_phone">Contact via Phone</string>
+    <string name="contact_email">Contact via Email</string>
 </resources>

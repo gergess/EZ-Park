@@ -16,18 +16,23 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/txtPhone_contact"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contact us via Phone"
+        android:text="Contact center of The EZ Parking App is always open for customers of our app. You can contact our manager via phone or email. "
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/txtEmail_cintact"
+    <Button
+        android:id="@+id/btn_phoneContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contact us via Email"
-        android:textAlignment="center"
-        android:textSize="24sp" />
+        android:text="@string/contact_phone" />
+
+    <Button
+        android:id="@+id/btn_emailContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_email" />
+
 </LinearLayout>

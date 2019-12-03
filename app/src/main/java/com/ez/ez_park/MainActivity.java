@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void openWebPage() {
+    public void openWebPage() { //because i used free host for web page, sometimes(couple hours a day) it can be offline
         Uri webpage = Uri.parse("https://ez-parking1.000webhostapp.com/appmanual.html");
         Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
         if (intent.resolveActivity(getPackageManager()) != null) {
